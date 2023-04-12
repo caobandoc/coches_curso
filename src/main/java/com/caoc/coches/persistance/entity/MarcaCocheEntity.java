@@ -16,5 +16,5 @@ public class MarcaCocheEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String descripcion;
+    private String description;
 }

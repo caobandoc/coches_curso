@@ -1,6 +1,6 @@
 package com.caoc.coches.persistance.mapper;
 
-import com.caoc.coches.domain.pojo.MarcaCochePojo;
+import com.caoc.coches.domain.dto.MarcaCocheDto;
 import com.caoc.coches.persistance.entity.MarcaCocheEntity;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -13,9 +13,9 @@ public interface IMarcaCocheMapper {
 
     @Mapping(source = "id", target = "id")
     @Mapping(source = "description", target = "description")
-    MarcaCochePojo toMarcaCochePojo(MarcaCocheEntity marcaCocheEntity);
+    MarcaCocheDto toMarcaCocheDto(MarcaCocheEntity marcaCocheEntity);
     @InheritInverseConfiguration
-    MarcaCocheEntity toMarcaCocheEntity(MarcaCochePojo marcaCochePojo);
+    MarcaCocheEntity toMarcaCocheEntity(MarcaCocheDto marcaCocheDto);
 
-    List<MarcaCochePojo> toMarcaCochePojoList(List<MarcaCocheEntity> marcaCocheEntityList);
+    List<MarcaCocheDto> toMarcaCocheDtoList(List<MarcaCocheEntity> marcaCocheEntityList);
 }
