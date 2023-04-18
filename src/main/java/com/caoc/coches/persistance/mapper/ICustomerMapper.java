@@ -10,6 +10,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface ICustomerMapper {
 
+    @Mapping(target = "authorities", ignore = true)
     CustomerDto toCustomerDto(CustomerEntity clienteEntity);
     @Mapping(target = "purchaseEntityList", ignore = true)
     CustomerEntity toCustomerEntity(CustomerDto clienteDto);
