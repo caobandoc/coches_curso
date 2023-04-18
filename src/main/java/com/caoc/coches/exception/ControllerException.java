@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class ControllerException {
 
-    @ExceptionHandler(EmailValidationException.class)
+    @ExceptionHandler({EmailValidationException.class, UserExistException.class})
     public ProblemDetail handleEmailValidationException(RuntimeException ex){
-        return ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, ex.getMessage());
+        return ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, ex.getMessage());
     }
 }
