@@ -1,7 +1,7 @@
 package com.caoc.coches.controller;
 
-import com.caoc.coches.domain.dto.MarcaCocheDto;
-import com.caoc.coches.domain.service.IMarcaCocheService;
+import com.caoc.coches.domain.dto.BrandCarDto;
+import com.caoc.coches.domain.service.IBrandCarService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,30 +21,30 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MarcaCocheController {
 
-    private final IMarcaCocheService marcaCocheService;
+    private final IBrandCarService marcaCocheService;
 
     @GetMapping
-    public ResponseEntity<List<MarcaCocheDto>> getAll() {
+    public ResponseEntity<List<BrandCarDto>> getAll() {
         return ResponseEntity.ok(marcaCocheService.getAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<MarcaCocheDto> getMarcaCocheById(@PathVariable int id) {
+    public ResponseEntity<BrandCarDto> getMarcaCocheById(@PathVariable int id) {
         return ResponseEntity.of(marcaCocheService.getMarcaCocheById(id));
     }
 
     @PostMapping
-    public ResponseEntity<MarcaCocheDto> save(@RequestBody MarcaCocheDto marcaCocheDto) {
+    public ResponseEntity<BrandCarDto> save(@RequestBody BrandCarDto brandCarDto) {
         try{
-            return ResponseEntity.status(HttpStatus.CREATED).body(marcaCocheService.save(marcaCocheDto));
+            return ResponseEntity.status(HttpStatus.CREATED).body(marcaCocheService.save(brandCarDto));
         }catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
 
     @PutMapping
-    public ResponseEntity<MarcaCocheDto> update(@RequestBody MarcaCocheDto marcaCocheDto) {
-        return ResponseEntity.of(marcaCocheService.update(marcaCocheDto));
+    public ResponseEntity<BrandCarDto> update(@RequestBody BrandCarDto brandCarDto) {
+        return ResponseEntity.of(marcaCocheService.update(brandCarDto));
     }
 
     @DeleteMapping("/{id}")
