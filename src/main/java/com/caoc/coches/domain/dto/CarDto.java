@@ -3,25 +3,43 @@ package com.caoc.coches.domain.dto;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+/**
+ * Dto que modela un coche
+ */
+@Getter @Setter
 public class CarDto {
-    private Long codeCar;
+
+    private Integer codeCar;
+
     private Integer brandCarId;
-    private String brand;
+
+    private String brandCarString;
+
     private String reference;
+
     private Double price;
-    private Integer modelYear;
+
+    private Double modelYear;
+
     private String color;
-    private Integer horsePower;
-    private Integer numberDoors;
-    private Integer cylinder;
+
+    private Double horsepower;
+
+    private Integer numberDoor;
+
+    private Double engineDisplacement;
+
     private String transmission;
+
     private String fuelType;
-    private Integer numberSeat;
+
+    private Integer numberSeats;
+
     private Integer traction;
+
     private String steering;
+
     private String category;
-    private Integer quantity;
+
     private String imagePath;
 }

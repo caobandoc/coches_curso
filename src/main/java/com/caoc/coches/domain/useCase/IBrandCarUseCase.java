@@ -1,14 +1,11 @@
-package com.caoc.coches.domain.repository;
+package com.caoc.coches.domain.useCase;
 
 import com.caoc.coches.domain.dto.BrandCarDto;
 
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Interface del repositorio de marca coche
- */
-public interface IBrandCarRepository {
+public interface IBrandCarUseCase {
 
     /**
      * Devuelve una lista con todas las marcas de coches
@@ -30,9 +27,18 @@ public interface IBrandCarRepository {
      */
     BrandCarDto save(BrandCarDto newBrandCar);
 
+
+    /**
+     * Actualiza una marcha coche
+     * @param newBrandCar Marca coche a actualizar
+     * @return Marca coche actualizada
+     */
+    Optional<BrandCarDto> update(BrandCarDto newBrandCar);
+
     /**
      * Elimina una marca coche dada su id
      * @param idBrandCar Id del marca coche a eliminar
+     * @return true si se eliminó, false de lo contrario
      */
-    void delete(Integer idBrandCar);
+    boolean delete(Integer idBrandCar);
 }

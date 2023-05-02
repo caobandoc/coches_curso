@@ -1,13 +1,13 @@
-package com.caoc.coches.persistance.repository;
+package com.caoc.coches.persistance.crud;
 
 import com.caoc.coches.persistance.entity.CustomerEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
 import java.util.Optional;
 
 public interface ICustomerCrudRepository extends JpaRepository<CustomerEntity, String> {
 
-    @Query("SELECT c FROM CustomerEntity c WHERE c.email = ?1")
+    //Query method
+    //@Query("SELECT c FROM CustomerEntity c WHERE c.carId = ?1")
     Optional<CustomerEntity> findByEmail(String email);
 }

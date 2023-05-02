@@ -1,55 +1,43 @@
 package com.caoc.coches.controller;
 
 import com.caoc.coches.domain.dto.CustomerDto;
-import com.caoc.coches.domain.service.ICustomerService;
+import com.caoc.coches.domain.useCase.ICustomerUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/customer")
 @RequiredArgsConstructor
+@RestController
+@RequestMapping(path = "/customers")
 public class CustomerController {
 
-    private final ICustomerService customerService;
+    private final ICustomerUseCase iCustomerUseCase;
 
-    @GetMapping
+    @GetMapping()
     public ResponseEntity<List<CustomerDto>> getAll() {
-        return ResponseEntity.ok(customerService.getAll());
+        return ResponseEntity.ok(iCustomerUseCase.getAll());
     }
 
-    @GetMapping("/{cardId}")
+    @GetMapping(path = "/{cardId}")
     public ResponseEntity<CustomerDto> getCustomerByCardId(@PathVariable String cardId) {
-        return ResponseEntity.of(customerService.getCustomerByCardId(cardId));
+        return ResponseEntity.of(iCustomerUseCase.getCustomerByCardId(cardId));
     }
 
-    @GetMapping("/email/{email}")
+    @GetMapping(path = "/email/{email}")
     public ResponseEntity<CustomerDto> getCustomerByEmail(@PathVariable String email) {
-        return ResponseEntity.of(customerService.getCustomerByEmail(email));
+        return ResponseEntity.of(iCustomerUseCase.getCustomerByEmail(email));
     }
 
-    @PostMapping
-    public ResponseEntity<CustomerDto> save(@RequestBody CustomerDto customerDto) {
-        return ResponseEntity.ok(customerService.save(customerDto));
+    @PatchMapping
+    public ResponseEntity<CustomerDto> update(@RequestBody CustomerDto customerDtoUpdate) {
+        return ResponseEntity.of(iCustomerUseCase.update(customerDtoUpdate));
     }
 
-    @PutMapping
-    public ResponseEntity<CustomerDto> update(@RequestBody CustomerDto customerDto) {
-        return ResponseEntity.of(customerService.update(customerDto));
-    }
-
-    @DeleteMapping("/{cardId}")
+    @DeleteMapping(path = "/{cardId}")
     public ResponseEntity<Boolean> delete(@PathVariable String cardId) {
-        return new ResponseEntity<>(customerService.delete(cardId) ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(this.iCustomerUseCase.delete(cardId) ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 }

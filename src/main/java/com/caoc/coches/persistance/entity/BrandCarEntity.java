@@ -1,27 +1,42 @@
 package com.caoc.coches.persistance.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
 
-@Getter
-@Setter
+/**
+ * Entidad de marca coche
+ */
+@Getter @Setter
 @Entity
 @Table(name = "marca_coche")
 public class BrandCarEntity {
+
+
+    /**
+     * Id de la marca
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+
+    /**
+     * Descripcion de la marca
+     */
+    @Column(name = "descripcion")
     private String description;
 
-    @OneToMany(mappedBy = "brandCarEntity", fetch = FetchType.LAZY)
-    private List<CarEntity> carEntity;
+    @OneToMany(mappedBy = "brandCarEntity", orphanRemoval = true)
+    private List<CarEntity> carEntities;
+
+    @Override
+    public String toString() {
+        return "BrandCarEntity{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

@@ -10,12 +10,12 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface ICarMapper {
 
-    @Mapping(target = "brand", source = "brandCarEntity.description")
+    @Mapping(source = "brandCarEntity.description", target = "brandCarString")
     CarDto toCarDto(CarEntity carEntity);
 
-    @Mapping(target = "carPurchaseEntity", ignore = true)
     @Mapping(target = "brandCarEntity", ignore = true)
+    @Mapping(target = "carPurchaseEntity", ignore = true)
     CarEntity toCarEntity(CarDto carDto);
 
-    List<CarDto> toCarDtoList(List<CarEntity> carEntityList);
+    List<CarDto> toCarsDto(List<CarEntity> carEntityList);
 }

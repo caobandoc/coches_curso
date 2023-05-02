@@ -1,16 +1,15 @@
-package com.caoc.coches.domain.repository;
+package com.caoc.coches.domain.useCase;
 
 import com.caoc.coches.domain.dto.CarDto;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface ICarRepository {
-
+public interface ICarUseCase {
 
     List<CarDto> getAll();
 
-    List<CarDto> getByIdBrandCar(Integer idBrandCar);
+    List<CarDto> getByIdBrandCar(Integer idCar);
 
     List<CarDto> getCarsByPriceLessThan(Double price);
 
@@ -18,5 +17,5 @@ public interface ICarRepository {
 
     CarDto save(CarDto newCar);
 
-    void delete(Integer idCar);
+    boolean delete(Integer idCar);
 }

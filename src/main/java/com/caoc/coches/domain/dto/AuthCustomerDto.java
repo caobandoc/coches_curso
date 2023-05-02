@@ -1,12 +1,12 @@
 package com.caoc.coches.domain.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-@AllArgsConstructor
-public class ResponseCustomerDto {
+public class AuthCustomerDto {
+
+    private String email;
 
     private String password;
 }

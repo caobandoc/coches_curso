@@ -1,14 +1,15 @@
-package com.caoc.coches.domain.repository;
+package com.caoc.coches.domain.useCase;
 
 import com.caoc.coches.domain.dto.CustomerDto;
+import com.caoc.coches.domain.dto.ResponseCustomerDto;
 
 import java.util.List;
 import java.util.Optional;
 
 /**
- * Interface del repositorio de Cliente
+ * Interfaz de servicio de cliente
  */
-public interface ICustomerRepository {
+public interface ICustomerUseCase {
 
     /**
      * Devuelve una lista con todos los cliente
@@ -23,8 +24,10 @@ public interface ICustomerRepository {
     Optional<CustomerDto> getCustomerByEmail(String email);
 
 
-    CustomerDto save(CustomerDto newCustomer);
+    ResponseCustomerDto save(CustomerDto newCustomer);
+
+    Optional<CustomerDto> update(CustomerDto modifyCustomer);
 
 
-    void delete(String  cardId);
+    boolean delete(String  cardId);
 }

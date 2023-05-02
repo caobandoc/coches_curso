@@ -1,35 +1,40 @@
 package com.caoc.coches.persistance.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
 
-@Getter
-@Setter
+/**
+ * Entidad de un cliente
+ */
+@Getter @Setter
 @Entity
-@Table(name = "cliente")
+@Table(name = "clientes")
 public class CustomerEntity {
 
     @Id
     @Column(name = "cedula")
     private String cardId;
+
     @Column(name = "nombre_completo")
     private String fullName;
+
     @Column(name = "correo")
     private String email;
+
     @Column(name = "numero_celular")
-    private Double numberPhone;
+    private Double numberCellphone;
+
     @Column(name = "activo")
     private Integer active;
+
     @Column(name = "contrasenia")
     private String password;
-    @OneToMany(mappedBy = "customerEntity")
-    private List<PurchaseEntity> purchaseEntityList;
 
+    private String rol;
+
+    @OneToMany(mappedBy = "customerEntity")
+    private List<PurchaseEntity> purchaseEntity;
 }

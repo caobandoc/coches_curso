@@ -1,13 +1,15 @@
-package com.caoc.coches.persistance.repository;
+package com.caoc.coches.persistance.crud;
 
 import com.caoc.coches.persistance.entity.CarEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface ICarCrudRepository extends JpaRepository<CarEntity, Long> {
+public interface ICarCrudRepository extends JpaRepository<CarEntity, Integer> {
 
-    List<CarEntity> findAllByBrandCarId(Integer brandCarId);
+    List<CarEntity> findAllByBrandCarId(Integer id);
+
 
     List<CarEntity> findAllByPriceLessThanEqualOrderByPriceAsc(Double price);
+
 }

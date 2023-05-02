@@ -1,16 +1,22 @@
 package com.caoc.coches.domain.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import java.time.LocalDateTime;
+import java.util.List;
 
-import java.util.Date;
-
-@Getter
-@Setter
+/**
+ * Dto de la consulta una compra
+ */
 public class PurchaseResponseDto {
-    private Long numberInvoice;
-    private String CustomerCardId;
-    private Date date;
+
+    private Integer numberBill;
+
+    private String cardIdCustomer;
+
+    private LocalDateTime date;
+
     private Double total;
+
     private String paymentMethod;
+
+    private List<CarPurchaseResponseDto> carsPurchase;
 }

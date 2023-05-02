@@ -7,6 +7,9 @@ import org.mapstruct.Mapping;
 
 import java.util.List;
 
+/**
+ * Mapper de compras
+ */
 @Mapper(componentModel = "spring")
 public interface IPurchaseMapper {
 
@@ -15,6 +18,5 @@ public interface IPurchaseMapper {
     @Mapping(target = "customerEntity", ignore = true)
     PurchaseEntity toPurchaseEntity(PurchaseRequestDto purchaseRequestDto);
 
-    List<PurchaseRequestDto> toPurchaseRequestDto(List<PurchaseEntity> purchaseEntity);
-
+    List<PurchaseRequestDto> toPurchasesDto(List<PurchaseEntity> purchaseEntityList);
 }
